@@ -14,14 +14,14 @@ Every function has been split into their own *.S file with an quite self-explana
 
 ## Wiring
 
-| Pin | Hardware |
-| --- | --- | --- |
-| 5v | Leds +; Buttons + |
-| A8 | Red Led - |
-| B15 | Yellow Led - |
-| B14 | Green Led - |
-| B13 | Button0 - |
-| B12 | Button1 - |
+| Pin | Hardware        |
+|-----|-----------------|
+| +5V | Leds+, Buttons+ |
+| A8  | Red led -       |
+| B15 | Yellow led -    |
+| B14 | Green led -     |
+| B13 | Button0 -       |
+| B12 | Button1 -       |
 
 ## Download latest:
 [Click here for latest precompiled release](https://github.com/ChococookieOS/Sipeed-Longan-Nano-Traffic-Light-Library/releases)

@@ -1,27 +1,34 @@
-# Assembler Library for Sipeed Longan Nano
+# Eingebettete Ampelschaltung WS19/20
 
-This library allows for user interaction of push buttons and leds which are connected to the [Sipeed Longan Nano](https://longan.sipeed.com/en/)
+Symbolisiert eine tertiäre Ampel und erlaubt einen eingangsgesteuerten Phasenablauf
+Dieses Projekt verwendet die [Sipeed-Longan-Nano-Traffic-Light-Library](https://github.com/ChococookieOS/Sipeed-Longan-Nano-Traffic-Light-Library)
+und die dort beschriebenen Verkabelung wurde beibehalten.
 
-## Supported functions
+##Modi
+Die Ampel läuft im wesentlichen in drei verschiedenen Modi. 
+Nach dem Einschalten wird immer der Standby-Modus ausgewählt.
 
-Every function has been split into their own *.S file with an quite self-explanatory name but still:
-* enableGPIOClocksAB() : enables the GPIO clocks for the A and B pinbase. This needs to be called before any GPIO action can be performed. Is already called in prepareLEDS()
-* prepareLEDS() calls enableGPIOClocksAB() and than sets the led pins specified in the table to output pins.
-* prepareInput() sets the push button pins to input pins.
-* turnCOLOROn() sets the corresponding output pin LOW so that current can flow from +5V to GND
-* turnCOLOROff() sets the corresponding output pin HIGH so that there is no voltage difference between the pin and +5V
+### Standby-Modus (Nachtmodus)
+Im Standby-Modus blinkt lediglich die gelbe Lampe der Ampel.
+Erfolgt keine physische Eingabe schaltet sich die Ampel nach zehn Blinkzyklen in den Schlafmodus.
+Erfolgt eine physische Eingabe schaltet sich die Ampel in den Aktiv-Modus.
 
+### Aktiv-Modus
+Im Aktiv-Modus werden zyklisch nacheinander folgende Leuchtphasen angestuert:
+Rot
+Rot-Gelb
+Grün
+Gelb
+Rot
 
-## Wiring
+Durch eine kurze physische Eingabe wird der Zyklus pausiert und hält in seiner aktuellen Phase an.
+Eine weitere kurzee physische Eingabe setzt den Zyklus fort.
+Eine kurze physische Eingabe wird ab einer Dauer von 100ms erkannt.
 
-| Pin | Hardware        |
-|-----|-----------------|
-| +5V | Leds+, Buttons+ |
-| A8  | Red led -       |
-| B15 | Yellow led -    |
-| B14 | Green led -     |
-| B13 | Button0 -       |
-| B12 | Button1 -       |
+Durch eine lange phyische Eingabe wird die Ampel in den Standby-Modus versetzt.
+Eine lange phyische Eingabe wird ab einer Dauer von 2000ms erkannt 
 
-## Download latest:
-[Click here for latest precompiled release](https://github.com/ChococookieOS/Sipeed-Longan-Nano-Traffic-Light-Library/releases)
+### Schlaf-Modus
+Im Schlaf-Modus sind alle Lampen ausgeschaltet.
+Durch eine phyische Eingabe wird die Ampel reaktiviert und in den Standby-Modus versetzt.
+Eine phyische Eingabe wird ab einer Dauer von 100ms erkannt.

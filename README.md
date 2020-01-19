@@ -3,6 +3,7 @@
 This library allows for user interaction of push buttons and leds which are connected to the [Sipeed Longan Nano](https://longan.sipeed.com/en/)
 
 ## Supported functions
+
 Every function has been split into their own *.S file with an quite self-explanatory name but still:
 * enableGPIOClocksAB() : enables the GPIO clocks for the A and B pinbase. This needs to be called before any GPIO action can be performed. Is already called in prepareLEDS()
 * prepareLEDS() calls enableGPIOClocksAB() and than sets the led pins specified in the table to output pins.
@@ -12,6 +13,7 @@ Every function has been split into their own *.S file with an quite self-explana
 
 
 ## Wiring
+
 | Pin | Hardware |
 | --- | --- | --- |
 | 5v | Leds +; Buttons + |

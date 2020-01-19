@@ -13,6 +13,7 @@ Every function has been split into their own *.S file with an quite self-explana
 
 ## Wiring
 |Pin|Hardware|
+|---|---|---|
 |5v|Leds +; Buttons +|
 |A8| Red Led - |
 |B15| Yellow Led - |
